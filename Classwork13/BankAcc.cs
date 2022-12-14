@@ -1,32 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Classwork13
 {
-    enum BankAccountType
+    public enum BankAccountType
     {
         Current,
         Saving
     }
-    internal class BankAccount
+    public class BankAccount
     {
-        public static int i = -1;
-        public const int n = 3;
+        public static int i = -1; //поле для индексации
+        public static int n = 3; //точное число операций
         private int account_number;
         private double balance;
         private BankAccountType type;
         private Queue<BankTransaction> Transactions = new Queue<BankTransaction>();
-        public BankTransaction[] transactions;
-        private string holder;
-        public BankTransaction this[int index]
+        public BankTransaction[] transactions; //масссив для индексатора
+        private string holder; //держатель карты
+        public BankTransaction this[int index] //индексатор
         {
             get { return transactions[index]; }
             set { transactions[index] = value; }
         }
-        public void Show_trans()
+        public void Show_trans()//демонстрация обращения к транзакциям по индексу
         {
             for( int i = 0; i < transactions.Length; i++ )
             {
@@ -56,16 +58,17 @@ namespace Classwork13
             Random r = new Random();
             account_number = r.Next(999, 10000);
         }
-        public int AccountNumber { get { return account_number; } }
-        public BankAccountType Type { get { return type; } }
-        public string Holder { get; set; }
+        public int AccountNumber { get { return account_number; } } //новое свойство
+        public BankAccountType Type { get { return type; } } //новое свойство
+        public string Holder { get; set; } //новое свойство
         public BankTransaction PutOnAccount()
         {
             Console.Write("Введите сумму для пополнения ");
             double temp = Convert.ToDouble(Console.ReadLine());
             BankTransaction b = new BankTransaction(temp);
             Transactions.Enqueue(b);
-            transactions[i++]=b;
+            i++;
+            transactions[i]=b;
             return b;
         }
         public BankTransaction WithdrawFromAccount()
@@ -75,7 +78,8 @@ namespace Classwork13
             double temp = Convert.ToDouble(Console.ReadLine());
             BankTransaction b = new BankTransaction(temp);
             Transactions.Enqueue(b);
-            transactions[i++] = b;
+            i++; 
+            transactions[i] = b;
             if (balance >= temp)
             {
                 return b;
@@ -94,6 +98,11 @@ namespace Classwork13
             }
             sw.Close();
             GC.SuppressFinalize(this);
+        }
+        public void DumpToScreen() //для 14 главы
+        {
+            Console.WriteLine(Holder +": "+ account_number +" - "+ type);
+            Show_trans();
         }
     }
 }

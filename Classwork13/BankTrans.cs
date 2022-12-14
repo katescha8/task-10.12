@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classwork13
 {
-    internal class BankTransaction
+    public class BankTransaction
     {
         private DateTime current_time;
         private double sum;
@@ -15,7 +15,7 @@ namespace Classwork13
             this.sum = sum;
             current_time = DateTime.Now;
         }
-        public DateTime CurrentTime { get { return current_time; } }
-        public double Sum { get { return sum; } }
+        public DateTime CurrentTime { get { return current_time; } } //новое свойство
+        public double Sum { get { return sum; } }//новое свойство
     }
 }

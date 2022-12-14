@@ -17,6 +17,8 @@ class Program
         BankAccount ba = new BankAccount(1000, BankAccountType.Current);
         ba.Holder = "Alexandro";
         ba.WithdrawFromAccount();
+        ba.PutOnAccount();
+        ba.WithdrawFromAccount();
         ba.Dispose(path +"/"+ file_name);
         Console.WriteLine(ba.AccountNumber + " - " + ba.Type + " - " + ba.Holder);
     }
