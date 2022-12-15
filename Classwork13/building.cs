@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Classwork13
 {
-    class Building
+    [DevInfo("katescha8", "K(P)FU IVMIIT")] //для домашнего задания 14.1
+    public class Building
     {
         public static int i = -1;
         private int number;
@@ -49,7 +50,7 @@ namespace Classwork13
             this.number_of_flats = flats;
             this.number_of_entrances = entrances;
         }
-        public Building(byte floors, Yard y)
+        internal Building(byte floors, Yard y)
         {
             this.number_of_floors = floors;
             y.yard[++i] = this;

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class DeveloperInfoAttribute : Attribute
+public class DeveloperInfoAttribute : Attribute //для упражнения 14.2
 {
     public DeveloperInfoAttribute(string developer)
     { this.developer = developer; }
-    public DeveloperInfoAttribute()
-    { }
     public string developer;
     public string date;
 }
+
 

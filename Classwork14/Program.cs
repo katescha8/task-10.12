@@ -24,10 +24,10 @@ class Program
     }
     public static void HomeTask_14_1()
     {
-
+        Building b = new Building(12, 120, 40, 160, 4);
     }
     static void Main(string[] args)
     {
-        Task_14_2();
+        HomeTask_14_1();
     }
 }
